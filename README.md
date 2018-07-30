@@ -1,2 +1,0 @@
-# TrafficSignalControl
-Created with CodeSandbox
