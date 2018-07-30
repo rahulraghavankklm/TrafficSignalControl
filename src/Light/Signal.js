@@ -47,7 +47,8 @@ class Signal extends React.Component {
   renderSignals = () => {
     const { active, signal } = this.state;
     return signal.map(light => {
-      return <Light isOn={active === light[0]} color={light[0]} />;
+      const color = light[0];
+      return <Light key={color} isOn={active === color} color={color} />;
     });
   };
 
