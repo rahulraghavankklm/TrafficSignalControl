@@ -19,7 +19,7 @@ const titleCase = str => str.slice(0, 1).toUpperCase() + str.slice(1);
 
 class Field extends React.PureComponent {
   render() {
-    const { label, name, type, onChange } = this.props;
+    const { label, name, type, value, onChange } = this.props;
     return (
       <div style={styles.field}>
         <label htmlFor={label} style={styles.label}>
@@ -30,6 +30,7 @@ class Field extends React.PureComponent {
           id={label}
           name={name}
           type={type}
+          value={value}
           onChange={onChange}
         />
       </div>
@@ -41,6 +42,7 @@ Field.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
