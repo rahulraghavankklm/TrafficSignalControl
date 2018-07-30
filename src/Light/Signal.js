@@ -18,11 +18,7 @@ class Signal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      red: false,
-      yellow: false,
-      green: false,
-
-      signal: ["red", "yellow", "green"],
+      signal: [["red", 3000], ["yellow", 2000], ["green", 3000]],
       active: "yellow",
       counter: 0,
       isRev: false
@@ -44,20 +40,19 @@ class Signal extends React.Component {
     const newCounter = counter === signal.length - 1 ? 0 : counter + 1;
     this.setState({
       counter: newCounter,
-      active: signal[newCounter]
+      active: signal[newCounter][0]
+    });
+  };
+
+  renderSignals = () => {
+    const { active, signal } = this.state;
+    return signal.map(light => {
+      return <Light isOn={active === light[0]} color={light[0]} />;
     });
   };
 
   render() {
-    const { red, yellow, green, active } = this.state;
-
-    return (
-      <div style={styles.signal}>
-        <Light isOn={active === "red"} color={"red"} />
-        <Light isOn={active === "yellow"} color={"yellow"} />
-        <Light isOn={active === "green"} color={"green"} />
-      </div>
-    );
+    return <div style={styles.signal}>{this.renderSignals()}</div>;
   }
 }
 
